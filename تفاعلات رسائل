@@ -1,0 +1,155 @@
+<?php
+//Dev HaMaD I'm RaMbO
+// حسابي @CIJlX قناتي @BB55IL
+ob_start();
+error_reporting(0);
+ini_set("log_errors" , "off");
+$host=$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+$API_KEY = "7083435529:AAEro4ls6m43KheSX_ayX2MmXkR7ahbQ_u8"; // توكن البوت //
+$Amind =(''902816989''); // ايديك //
+$id_bot =(''7083435529''); //ايدي البوت//
+$uoserbot = "H_I5BOT";// يوزر البوت 
+$nambot =  "*زنـش رامبو*";// اسم البوت
+define('API_KEY',$API_KEY);
+echo file_get_contents("https://api.telegram.org/bot" . API_KEY . "/setwebhook?url=" . $_SERVER['SERVER_NAME'] . "" . $_SERVER['SCRIPT_NAME']);
+function bot($method,$datas=[]){
+    $url = "https://api.telegram.org/bot".API_KEY."/".$method;
+$ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+    $res = curl_exec($ch);
+    if(curl_error($ch)){
+        var_dump(curl_error($ch));
+    }else{
+        return json_decode($res);
+    }
+}
+//نهاية الفاكشن//
+$update = json_decode(file_get_contents('php://input'));
+$message = $update->message;
+$chat_id = $update->message->chat->id; 
+$chid  = $update->channel_post->chat->id;
+$text = $message->text;
+$chtext = $update->channel_post->text;
+$message_id = $update->message->message_id; 
+$messageid = $update->channel_post->message_id;
+//Dev HaMaD I'm RaMbO
+$update = json_decode(file_get_contents('php://input'));
+$message = $update->message;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id2 = $update->callback_query->message->message_id;
+$data = $update->callback_query->data;
+$id = $message->from->id;
+$text = $message->text;
+$chat_id = $message->chat->id;
+$user = $message->from->username;
+$message = $update->message;
+$chat_id = $message->chat->id;
+$text = $message->text;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id = $update->callback_query->message->message_id;
+$data = $update->callback_query->data;
+$name = $update->message->from->first_name;
+$name2 = $update->callback_query->from->first_name;
+$from_id = $update->message->from->id;
+$for = $message->from->first_name;
+$from_id = $message->from->id;
+$reply = $message->reply_to_message;
+$tc = $update->message->chat->type;
+
+$update = json_decode(file_get_contents('php://input'));
+if (isset($update->message)) {
+    $message = $update->message;
+    $message_id = $message->message_id ?? null;
+    $username = $message->from->username ?? null;
+    $chat_id = $message->chat->id ?? null;
+    $title = $message->chat->title ?? null;
+    $text = $message->text ?? null;
+    $user = $message->from->username ?? null;
+    $name = $message->from->first_name ?? null;
+    $from_id = $message->from->id ?? null;
+}
+
+if (isset($update->callback_query)) {
+    $data = $update->callback_query->data ?? null;
+    $chat_id = $update->callback_query->message->chat->id ?? null;
+    $title = $update->callback_query->message->chat->title ?? null;
+    $message_id = $update->callback_query->message->message_id ?? null;
+    $name = $update->callback_query->message->chat->first_name ?? null;
+    $user = $update->callback_query->message->chat->username ?? null;
+    $from_id = $update->callback_query->from->id ?? null;
+}
+
+$msg = "
+⌔ في بوت $nambot المتميز 🍓
+⌔ وضيفتي هيه التفاعل على الرسائل بـ العديد من التفاعلات 💛
+⌔ يمكني التفاعل في المجموعات والقنوات وخاص البوت 🌼
+⌔ كل ما عليك هوا اضافة البوت لقناتك او مجموعتك ورفعه مشرف ☘️
+⌔ وسوف اقوم بالتفاعل على اي رساله ترسل جرب البوت الان 💗
+";
+
+$keyboard = [
+[['text' => "⌔ قناة البوت 🕊", 'url' =>"https://t.me/BB55IL"]],
+[['text'=>"⌔ اضفني الئ مجموعتك 🌼",'url'=>"t.me/".$uoserbot."?startgroup=new"],['text'=>"⌔ اضفني الئ قناتك 🩷",'url'=>"t.me/".$uoserbot."?startchannel=new"]], 
+[['text' => '⌔ المبرمج 🔥', 'url' => "tg://user?id=".$Amind]],
+];
+
+
+if($text =="/start"){
+bot('sendphoto',[
+'chat_id'=>$chat_id,
+'photo'=>"https://i.imgur.com/xnXLJMv.jpeg",
+'caption'=>"
+⌔ مرحبا بك {  [$name](tg://user?id=$from_id)  }
+$msg
+",
+'parse_mode'=>"markdown",'reply_to_message_id'=>$message->message_id, 
+'reply_markup' => json_encode([
+'inline_keyboard' =>$keyboard, 
+])
+]);
+}
+
+//Dev HaMaD I'm RaMbO
+// حسابي @CIJlX قناتي @BB55IL
+
+$ALI = ["🖤","🌚","🌸","👑","⚡","😉","💪🏻","🦁","😻","👍","😂","🌛","😜","🤎","😴","💙","💗","🫂",
+"💕", "❤", "🔥", "🥰", "👏", "😁", "😢", "🎉", "🤩", "🙏", "👌",
+"🕊", "😍", "❤‍🔥", "😅", "🌷", "💔", "🍓", "🍾",
+"😊", "😍", "🥳", "😎", "🌈", "🌞", "🌟", "🎊", "🎈", "💖", "♥","🍂","😨","💚"];
+$T = $ALI[array_rand($ALI)];
+bot('setmessagereaction',[
+'chat_id'=>$chat_id,'message_id'=>$message_id,
+'reaction'=>json_encode(array(['type'=> "emoji","emoji"=>$T]))
+]);
+$A = ["🖤","🌚","🌸","👑","⚡","😉","💪🏻","🦁","😻","👍","😂","🌛","😜","🤎","😴","💙","💗","🫂",
+"💕", "❤", "🔥", "🥰", "👏", "😁", "😢", "🎉", "🤩", "🙏", "👌",
+"🕊", "😍", "❤‍🔥", "😅", "🌷", "💔", "🍓", "🍾",
+"😊", "😍", "🥳", "😎", "🌈", "🌞", "🌟", "🎊", "🎈", "💖", "♥","🍂","😨","💚"];
+$n = $A[array_rand($A)];
+bot('setmessagereaction',[
+'chat_id'=>$chid,'message_id'=>$messageid,
+'reaction'=>json_encode(array(['type'=> "emoji","emoji"=>$n]))
+]);
+
+$new = $message->new_chat_member;
+$newbot = $update->message->new_chat_member;
+if($new and $new->id == $id_bot){
+bot('sendphoto',[
+'chat_id'=>$chat_id,
+'photo'=>"https://i.imgur.com/xnXLJMv.jpeg",
+'caption'=>"
+⌔ شكرا عزيزي $name لاضافتي للمجموعه 💗
+⌔ انا بوت $nambot وضيفتي هيه التفاعل على الرسائل في المجموعات والقنوات ✨
+⌔ قم برفعي مشرف وسوف اقوم بالتفاعل على اي رساله ترسل 🔥
+",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+'reply_to_message_id'=>$message->message_id,
+"reply_markup"=>json_encode([ 
+"inline_keyboard"=>[
+[['text'=>"⌔ شارك البوت 🌹",'switch_inline_query'=>"⌔ بوت $nambot لاضافة التفاعل على الرسائل يعمل في المجموعات والقنوات"]],
+]]) 
+]); 
+}
